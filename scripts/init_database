@@ -9,7 +9,7 @@ Script Purpose:
 */
 
 
-
+```python
 
 - Dropping Tables if they already exist
 spark.sql("DROP TABLE IF EXISTS workspace.bronze.crm_cust_info")
@@ -37,3 +37,5 @@ sales_details_df.write.mode("overwrite").saveAsTable("workspace.bronze.crm_sales
 cust_az12_df.write.mode("overwrite").saveAsTable("workspace.bronze.erp_cust_az12")
 loc_a101_df.write.mode("overwrite").saveAsTable("workspace.bronze.erp_loc_a101")
 px_cat_g1v2_df.write.mode("overwrite").saveAsTable("workspace.bronze.erp_px_cat_g1v2")
+
+```
