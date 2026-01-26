@@ -1,4 +1,4 @@
-/*
+"""
 ===================================================================================
 Stored Procedure: Creating Dim Products in Gold Layer
 ===================================================================================
@@ -12,7 +12,7 @@ Script Purpose:
 Usage:
     - These views can be queried directly for analytics and reporting.
 ===================================================================================
-*/
+"""
 
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
