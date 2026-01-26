@@ -1,4 +1,4 @@
-/*
+"""
 ===================================================================================
 Stored Procedure: Creating Fact Sales in Gold Layer
 ===================================================================================
@@ -12,7 +12,7 @@ Script Purpose:
 Usage:
     - These views can be queried directly for analytics and reporting.
 ===================================================================================
-*/
+"""
 
 
 import pyspark.sql.functions as F
