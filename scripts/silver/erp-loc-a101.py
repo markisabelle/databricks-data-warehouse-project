@@ -1,4 +1,4 @@
-/*
+"""
 ===================================================================================
 Stored Procedure: Creating loc_a101 Info in Silver Layer
 ===================================================================================
@@ -9,7 +9,7 @@ Actions Performed:
     - Truncates Silver tables.
     - Inserts transformed and cleansed data from Bronze into Silver tables.
 ===================================================================================
-*/
+"""
 
 import pyspark.sql.functions as F
 from pyspark.sql.types import StringType 
