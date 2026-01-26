@@ -1,16 +1,15 @@
 /*
-=============================================================================
-Create the First Layer of the Database
-=============================================================================
+=========================================================================================================
+Create Bronze Tables
+=========================================================================================================
 Script Purpose:
-    This script creates the first layer (Bronze Layer) in Data Warehouse after checking if it already exists.
-    If the database exists, it is dropped and recreated.
-
+    This script creates the tables in the Bronze Layer, dropping existing tables if they already exists.
+=========================================================================================================
 */
 
 
 
-- Dropping Tables if they already exist
+# Dropping Tables if they already exist
 spark.sql("DROP TABLE IF EXISTS workspace.bronze.crm_cust_info")
 spark.sql("DROP TABLE IF EXISTS workspace.bronze.crm_prd_info")
 spark.sql("DROP TABLE IF EXISTS workspace.bronze.crm_sales_details")
@@ -19,7 +18,7 @@ spark.sql("DROP TABLE IF EXISTS workspace.bronze.erp_loc_a101")
 spark.sql("DROP TABLE IF EXISTS workspace.bronze.erp_px_cat_g1v2")
 
 
-- Reading from the CSV files
+# Reading from the CSV files
 cust_info_df = spark.read.option("header", "true").option("inferSchema", "true").csv("/Volumes/workspace/bronze/source_system/source_crm/cust_info.csv")
 prd_info_df = spark.read.option("header", "true").option("inferSchema", "true").csv("/Volumes/workspace/bronze/source_system/source_crm/prd_info.csv")
 sales_details_df = spark.read.option("header", "true").option("inferSchema", "true").csv("/Volumes/workspace/bronze/source_system/source_crm/sales_details.csv")
@@ -29,7 +28,7 @@ px_cat_g1v2_df = spark.read.option("header", "true").option("inferSchema", "true
 
 
 
-- Writing into the Bronze Layer
+# Writing into the Bronze Layer
 cust_info_df.write.mode("overwrite").saveAsTable("workspace.bronze.crm_cust_info")
 prd_info_df.write.mode("overwrite").saveAsTable("workspace.bronze.crm_prd_info")
 sales_details_df.write.mode("overwrite").saveAsTable("workspace.bronze.crm_sales_details")
