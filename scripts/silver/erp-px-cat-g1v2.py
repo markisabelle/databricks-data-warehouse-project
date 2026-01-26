@@ -1,4 +1,4 @@
-/*
+"""
 ===================================================================================
 Stored Procedure: Creating px_cat_g1v2 in Silver Layer
 ===================================================================================
@@ -9,7 +9,7 @@ Actions Performed:
     - Truncates Silver tables.
     - Inserts transformed and cleansed data from Bronze into Silver tables.
 ===================================================================================
-*/
+"""
 
 
 import pyspark.sql.functions as F
