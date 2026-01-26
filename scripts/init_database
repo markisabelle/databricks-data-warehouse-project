@@ -8,7 +8,6 @@ Script Purpose:
 
 */
 
-%python
 
 
 - Dropping Tables if they already exist
