@@ -1,4 +1,4 @@
-/*
+"""
 ===================================================================================
 Stored Procedure: Creating Sales Details Info in Silver Layer
 ===================================================================================
@@ -9,7 +9,7 @@ Actions Performed:
     - Truncates Silver tables.
     - Inserts transformed and cleansed data from Bronze into Silver tables.
 ===================================================================================
-*/
+"""
 
 
 
