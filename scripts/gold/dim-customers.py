@@ -44,7 +44,7 @@ LEFT JOIN workspace.silver.erp_loc_a101 la
 """
 
 df = spark.sql(query)
-
+df.display()
 
 # Writing into gold table
 (
