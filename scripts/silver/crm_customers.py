@@ -1,11 +1,15 @@
 /*
 ===================================================================================
-Stored Procedure: Creating Silver
+Stored Procedure: Creating Customer Info in Silver Layer
+===================================================================================
+Script Purpose:
+    This stored procedure performs the ETL (Extract, Transform, Load) process to 
+    populate the 'silver' schema tables from the 'bronze' chema.
+Actions Performed:
+    - Truncates Silver tables.
+    - Inserts transformed and cleansed data from Bronze into Silver tables.
+===================================================================================
 */
-
-
-
-
 
 import pyspark.sql.functions as F
 from pyspark.sql.types import StringType 
