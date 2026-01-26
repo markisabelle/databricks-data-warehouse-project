@@ -1,4 +1,4 @@
-/*
+"""
 =========================================================================================================
 Create Bronze Tables
 =========================================================================================================
@@ -6,7 +6,7 @@ Script Purpose:
     This script creates the tables in the Bronze Layer, dropping existing tables if they already exists.
     This script also loads the data into the Bronze Layer.
 =========================================================================================================
-*/
+"""
 
 
 
