@@ -1,5 +1,3 @@
-![Data Warehouse Architecture](docs/data_flow.png)
-
 # databricks-data-warehouse-project
 
 Welcome to the **Data Warehouse and Analytics Project** repository!
