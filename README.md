@@ -1,6 +1,6 @@
 # databricks-data-warehouse-project
 
-![Data_Flow](docs/data_flow.png)
+![Project Preview](docs/data_flow.png)
 Welcome to the **Data Warehouse and Analytics Project** repository!
 Building a modern data warehouse in Databricks using SQL and Python, including ETL processes, data modeling, and analytics.
 
