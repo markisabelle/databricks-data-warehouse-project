@@ -101,6 +101,13 @@ FROM category_sales
 ORDER BY total_sales DESC
 
 
+/*
+category	  total_sales	overall_sales	percentage_of_total
+Bikes	      28316272	  29356250	    96.46%
+Accessories	700262	    29356250	    2.39%
+Clothing	  339716	    29356250	    1.16%
+*/
+  
 
   
 --- Data Segementation ---
@@ -128,7 +135,15 @@ FROM product_segments
 GROUP BY cost_range
 ORDER BY total_products DESC
 
+/*
+cost_range	total_products
+Below 100	  110
+100-500	    101
+500-1000	  45
+Above 1000	39
+*/
 
+  
 
 --- Group customers into three segments based on their spending behavior:
 ---   VIP: Customers with at least 12 months of history and spending more than $5,000.
@@ -162,6 +177,14 @@ FROM (
 )
 GROUP BY customer_segment
 ORDER BY total_customers DESC
+
+/*
+customer_segment	total_customers
+New	              14828
+Regular	          2037
+VIP	              1619
+*/
+
   
 
 --- Reporting ---
