@@ -18,7 +18,17 @@ WHERE TABLE_NAME = 'dim_customers'
 --- Explore All Categories "The major Divisions"
 
 SELECT DISTINCT country FROM gold.dim_customers
-
+/*
+  country
+1 Australia
+2 United States
+3 Canada
+4 Germany
+5 United Kingdom
+6 France
+7 n/a
+*/
+  
 SELECT DISTINCT category, subcategory, product_name
 FROM gold.dim_products
 ORDER BY 1, 2, 3
@@ -37,6 +47,10 @@ MAX(order_date) AS youngest_birthdate,
 DATEDIFF(month, MIN(order_date), MAX(order_date)) AS order_range_months
 FROM gold.fact_sales
 
+/*  
+oldest_birthdate	youngest_birthdate	order_range_months
+2010-12-29	      2014-01-28	        36  
+*/  
 
 SELECT 
 MIN(birth_date) AS oldest_birthdate,
@@ -45,9 +59,13 @@ MAX(birth_date) AS youngest_birthdate,
 DATEDIFF(year, MAX(birth_date), GETDATE()) AS youngest_age
 FROM gold.dim_customers
 
+/*
+oldest_birthdate	oldest_age	youngest_birthdate	youngest_age
+1916-02-10	      109	        1986-06-25	        39
+*/
 
 
-
+  
 --- Measures Exploration --
 ===================================================================================
 --- Find the Total Sales
@@ -78,6 +96,17 @@ SELECT 'Total Num. Customers', COUNT(*)
 FROM gold.dim_customers
 
 
+/*
+measure_name	          measure_value
+Total Sales	            29356250
+Total Quantity	        60423
+Average Price	          486.0377827080367
+Total Num. Orders	      27659
+Total Num. Products	    295
+Total Num. Customers	  18485
+*/
+
+  
 
 
 --- Magnitude Analysis --
@@ -95,24 +124,62 @@ FROM gold.dim_customers
 GROUP BY country
 ORDER BY total_customers DESC
 
+/*
+country	        total_customers
+United States	  7482
+Australia	      3591
+United Kingdom	1913
+France	        1810
+Germany	        1780
+Canada	        1571
+n/a	            337
+*/
 
+  
 SELECT gender, COUNT(customer_key) AS total_customers
 FROM gold.dim_customers
 GROUP BY gender
 ORDER BY total_customers DESC
 
+/*
+gender	total_customers
+Male	  9292
+Female	9085
+n/a	    108
+*/
+  
 
 SELECT category, COUNT(product_key) AS total_products
 FROM gold.dim_products
 GROUP BY category
 ORDER BY total_products DESC
 
+/*
+category	  total_products
+Components	127
+Bikes	      97
+Clothing	  35
+Accessories	29
+null	      7
+*/
+
+  
 
 SELECT category, AVG(cost) AS avg_costs
 FROM gold.dim_products
 GROUP BY category
 ORDER BY avg_costs DESC
 
+/*
+category	    avg_costs
+Bikes	        949.4432989690722
+Components	  264.7165354330709
+null	        28.571428571428573
+Clothing	    24.8
+Accessories	  13.172413793103448
+*/
+
+  
 
 SELECT p.category,
        SUM(f.sales_amount) total_revenue
@@ -122,6 +189,14 @@ ON p.product_key = f.product_key
 GROUP BY p.category
 ORDER BY total_revenue DESC
 
+/*
+category	  total_revenue
+Bikes	      28316272
+Accessories	700262
+Clothing	  339716
+*/
+
+  
 
 SELECT c.customer_key,
        c.firstname,
@@ -142,8 +217,18 @@ ON c.customer_key = f.customer_key
 GROUP BY c.country
 ORDER BY total_sold_items DESC
 
+/*
+country	        total_sold_items
+United States	  20481
+Australia	      13346
+Canada	        7630
+United Kingdom	6910
+Germany	        5626
+France	        5559
+n/a	            871
+*/
 
-
+  
 
 
 --- Ranking Analysis --
@@ -164,6 +249,15 @@ GROUP BY p.product_name
 ORDER BY total_revenue DESC
 LIMIT 5
 
+/*
+product_name	            total_revenue
+Mountain-200 Black- 46	  1373454
+Mountain-200 Black- 42	  1363128
+Mountain-200 Silver- 38	  1339394
+Mountain-200 Silver- 46	  1301029
+Mountain-200 Black- 38	  1294854
+*/
+  
 
 
 SELECT
@@ -176,7 +270,16 @@ GROUP BY p.product_name
 ORDER BY total_revenue
 LIMIT 5
 
+/*
+product_name	        total_revenue
+Racing Socks- L	      2430
+Racing Socks- M	      2682
+Patch Kit/8 Patches	  6382
+Bike Wash - Dissolver	7272
+Touring Tire Tube	    7440
+*/
 
+  
 SELECT c.customer_key,
        c.firstname,
        c.lastname,
@@ -188,6 +291,22 @@ GROUP BY c.customer_key, c.firstname, c.lastname
 ORDER BY total_revenue DESC
 LIMIT 10
 
+/*
+customer_key	firstname	lastname	  total_revenue
+1134	        Kaitlyn	  Henderson	  13294
+1303	        Nichole	  Nara	      13294
+1310	        Margaret	He	        13268
+1133	        Randall	  Dominguez	  13265
+1302	        Adriana	  Gonzalez	  13242
+1323	        Rosa	    Hu	        13215
+1126	        Brandi	  Gill	      13195
+1309	        Brad	    She	        13172
+1298	        Francisco	Sara	      13164
+435	          Maurice	  Shan	      12914
+*/
+
+
+  
 
 SELECT c.customer_key,
        c.firstname,
@@ -201,7 +320,12 @@ ORDER BY total_orders
 LIMIT 3
 
 
-
+/*
+customer_key	firstname	lastname	total_orders
+16820	        Candice	  Hu	      1
+17951	        Lance	    Ramos	    1
+15481        	Katherine	Cook	    1
+*/
 
 
 
